@@ -1,3 +1,6 @@
+<?php
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -27,108 +30,79 @@
 		<div id="TMGPrototype2"><div class="ic"></div>
 			
 			<ul class='sets'>
+			
 				<li data-setName="Veg-pizza">
 					<ul>
-						<li data-srcPreview="images/pizza 1.jpg">
-							<div>
-								<div class="content">
-									<img src="images/Peppy_Paneer veg pizza.jpg" alt="">
-									<h3>Peppy paneer</h3>
-									<p>Chunky paneer with crisp capsicum and spicy red pepper - quite a mouthful!</p>
-									<p>This just struck in my mind, so I thought to make one for you all as well!   Not only the tikka but the pizza</p>
-									<ul>
-										<li><span>Name:</span>Peppy paneer pizza</li>
-										<li><span>Price:</span> 200</li>
+					<?php
+						require 'dbconn.php';
+						$sql = "SELECT product_id, name, description, img_url, price, type FROM products WHERE type='vegpizza'";
+						$result = mysqli_query($conn, $sql);
+						
+						if (mysqli_num_rows($result) > 0) {
+							// output data of each row
+							while($row = mysqli_fetch_assoc($result)) {
+								echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+								echo '
+								<li data-srcPreview="uploads/'. $row["img_url"].'">
+								<div>
+									<div class="content">
+										<img src="uploads/'. $row["img_url"].'" alt="'.$row["name"].'">
+										<h3>'.$row["name"].'</h3>
+										<p>'.$row["description"].'</p>
 										
-									</ul>
-									
-								</div>
-							</div>
-						</li>
-						<li data-srcPreview="images/pizza 2.jpg">
-							<div>
-								<div class="content">
-									<img src="images/Deluxe_Veggie veg.jpg" alt="">
-									<h3>Deluxe veggie</h3>
-									<p>For a vegetarian looking for a BIG treat that goes easy on the spices, this one's got it all..<br> The onions, the capsicum, those delectable mushrooms - with paneer and golden corn to top it all.</p>
-									
-									<ul>
-										<li><span>Name:</span>Deluxe veggie</li>
-										<li><span>Price:</span> 220</li>
+										<ul>
+											<li><span>Name:</span>'.$row["name"].'</li>
+											<li><span>Price:</span>'.$row["price"].'</li>
+											<li><button onclick="window.location.href=\'payment.php\'">Order Now</button></li>
+										</ul>
 										
-									</ul>
-									
+									</div>
 								</div>
-							</div>
-						</li>
-						<li data-srcPreview="images/pizza 3.jpg">
-							<div>
-								<div class="content">
-									<h3>Mexican Green Wave</h3>
-									<img src="images/Mexican_Green_Wave veg pizza.jpg" alt="">
-									<p>A pizza loaded with crunchy onions, crisp capsicum, juicy tomatoes and jalapeno with a liberal sprinkling of exotic Mexican herbs.</p>
-									
-									<ul>
-										<li><span>Name:</span>Mexican Green Wave</li>
-										<li><span>Price:</span> 210</li>
-										
-									</ul>
-									
-								</div>
-							</div>
-						</li>
+							</li>';
+							
+							}
+						} else {
+							echo "0 results";
+						}
+					?>
+						
 					</ul>
 				</li>
 				<li data-setName="Nonveg-pizza">
 					<ul>
-						<li data-srcPreview="images/pizza 4.jpg">
-							<div>
-								<div class="content">
-									<img src="images/Pepper_Barbeque.jpg" alt="">
-									<h3>PEPPER BARBECUE CHICKEN </h3>
-									<p>Treat your taste buds with Double Pepper Barbecue Chicken, Peri-Peri Chicken, Chicken Tikka & Grilled Chicken Rashers </p>
-									
-									<ul>
-										<li><span>Name:</span>PEPPER BARBECUE CHICKEN </li>
-										<li><span>Price:</span> 220</li>
+					<?php
+						require 'dbconn.php';
+						$sql = "SELECT product_id, name, description, img_url, price, type FROM products WHERE type='nonvegpizz'";
+						$result = mysqli_query($conn, $sql);
+						
+						if (mysqli_num_rows($result) > 0) {
+							// output data of each row
+							while($row = mysqli_fetch_assoc($result)) {
+								echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+								echo '
+								<li data-srcPreview="uploads/'. $row["img_url"].'">
+								<div>
+									<div class="content">
+										<img src="uploads/'. $row["img_url"].'" alt="'.$row["name"].'">
+										<h3>'.$row["name"].'</h3>
+										<p>'.$row["description"].'</p>
 										
-									</ul>
-									
-								</div>
-							</div>
-						</li>
-						<li data-srcPreview="images/pizza 5.jpg">
-							<div>
-								<div class="content">
-									<img src="images/Chicken_Sausage.jpg" alt="">
-									<h3>Chicken Sausage</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia impedit possimus architecto repellat enim velit alias quis</p>
-									<p> harum veritatis. Autem quaerat obcaecati quos corporis quasi voluptatum dolores velit laboriosam.</p>
-									<ul>
-										<li><span>Name:</span>Chicken Sausage</li>
-										<li><span>Price:</span>240</li>
+										<ul>
+											<li><span>Name:</span>'.$row["name"].'</li>
+											<li><span>Price:</span>'.$row["price"].'</li>
+											<li><button onclick="window.location.href=\'google.com\'">Order Now</button></li>
+										</ul>
 										
-									</ul>
-									
+									</div>
 								</div>
-							</div>
-						</li>
-						<li data-srcPreview="images/pizza 6.jpg">
-							<div>
-								<div class="content">
-									<h3>CHICKEN SAUSAGE</h3>
-									<img src="images/Chicken_Tikka.jpg" alt="">
-									<p>Bite into supreme delight of Black Olives, Onions, Grilled Mushrooms, Pepper BBQ Chicken, Peri-Peri Chicken, Grilled Chicken Rashers </p>
-									
-									<ul>
-										<li><span>Name:</span>CHICKEN SAUSAGE</li>
-										<li><span>Price:</span>220</li>
-										
-									</ul>
-									
-								</div>
-							</div>
-						</li>
+							</li>';
+							
+							}
+						} else {
+							echo "0 results";
+						}
+					?>
+					
 					</ul>
 				</li>
 				
