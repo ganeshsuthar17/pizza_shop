@@ -12,7 +12,7 @@
 						<nav class="">
 							<ul class="sf-menu">
 								<li class="current"><a href="index.php">Home</a></li>
-								<li><a href="login.php">Admin</a></li>
+								<li><a href="adminlogin.php">Admin</a></li>
 								<li><a href="login.php">User</a></li>
 								<li><a href="contact.php">Contact</a></li>
                                 <li><a href="Register.php">Register</a></li>

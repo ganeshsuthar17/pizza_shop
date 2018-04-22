@@ -11,7 +11,7 @@ $password = mysqli_real_escape_string($conn,$_POST["password"]);
 	if(is_array($row)) {
         
     $_SESSION["user_id"] = $row['customer_id'];
-    header ('location: home.php');
+    header ('location: Add-Pizza.php');
 	} else {
     $message = "Invalid Username or Password!";
     echo 'doesnt match';

@@ -61,10 +61,10 @@
 				<div class="grid_9">
 					<div class="content"> 
 						
-                                                <form>
-                                                <h3>Feedback</h3>
-						<input type="text" name="" placeholder="Order id"><br><br>
-						<textarea rows="10" cols="20"></textarea>
+									<form method="POST" action="feedsubmit.php">
+									<h3>Feedback</h3>
+								<input type="text" name="ORDER_ID" placeholder="Order id"><br><br>
+								<textarea rows="10" cols="20" name="feedback"></textarea>
 <br><br>
                                                 <input type="submit" value="submit">
 				                </form>
