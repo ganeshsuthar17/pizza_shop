@@ -62,19 +62,25 @@
 			<div class="container_12">
 				<div class="grid_9">
 					<div class="content"> 
-						
-                                                <form>
-                                                <h3>Update status</h3>
-						<input type="text" name="" placeholder="Order id"><br><br>
-						<select>
-                                                <option value="Select option">Select option</option>
-                                                <option value="Order placed">Order placed</option>
-                                                <option value="In delivery">In delivery</option>
-                                                <option value="Delivered">Delivered</option>
-                                                </select>
-                                                <input type="submit" value="submit">
-				                </form>
-                                          </div>
+					<?php
+					if(isset($_GET['q'])){
+						if($_GET['q']=='updated'){
+							echo "Your order Updated!";
+						}
+					}
+					?>
+					<form method="POST" action="updatestatus.php">
+					<h3>Update status</h3>
+						<input type="text" name="order_id" placeholder="Order id"><br><br>
+						<select name="status">
+								<option value="Select option">Select option</option>
+								<option value="Order placed">Order placed</option>
+								<option value="In delivery">In delivery</option>
+								<option value="Delivered">Delivered</option>
+								</select>
+								<input type="submit" value="submit">
+						</form>
+                    </div>
 				
 			</div>
 		</div><br><br><br><br><br><br><br><br><br><br><br><br> <br><br> 

@@ -65,21 +65,49 @@
                                                  <table width="100%" class="table table-bordered table-hover" id="_addFiveTable">
                                                 <thead>
                                                      <tr>
-                                                       <th>Customer id</th>
-                                                       <th>Product id</th>
+													<th>Order ID</th>
+                                                       <th>Customer</th>
+                                                       <th>Product</th>
                                                        <th>Payment method</th>
+													   <th>price</th>
                                                        <th>Datetime</th>
                                                        <th>Status</th>
                                                      </tr>
                                                 </thead>
                                                  <tbody>  
-                                                     <tr>
-                                                       <td contenteditable="true">&nbsp;</td>
-                                                       <td contenteditable="true">&nbsp;</td>
-                                                       <td contenteditable="true">&nbsp;</td>
-                                                       <td contenteditable="true">&nbsp;</td>
-                                                       <td contenteditable="true">&nbsp;</td>
-                                                    </tr>
+				<?php
+				require 'dbconn.php';
+
+				
+				$sql = "SELECT orders.order_id AS order_id, customers.name AS c_name, products.name AS p_name, products.price AS price, STATUS, datetime, payment_method
+				FROM orders
+				  LEFT JOIN customers ON orders.customer_id = customers.customer_id
+				  LEFT JOIN products ON orders.product_id = products.product_id";
+				$result = mysqli_query($conn, $sql);
+				
+				if (mysqli_num_rows($result) > 0) {
+					// output data of each row
+					while($row = mysqli_fetch_assoc($result)) {
+						
+						echo '
+						<tr>
+							<td>'.$row['order_id'].'</td>
+							<td>'.$row['c_name'].'</td>
+							<td>'.$row['p_name'].'</td>
+							<td>'.$row['payment_method'].'</td>
+							<td>'.$row['price'].'</td>
+							<td>'.$row['datetime'].'</td>
+							<td>'.$row['STATUS'].'</td>
+						</tr>
+
+						';
+					
+					}
+				} else {
+					echo "0 results";
+				}
+					?>
+											
                                                   </tbody>
                                              </table>
                                           </div>

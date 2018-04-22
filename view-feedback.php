@@ -65,21 +65,39 @@
                                                  <table width="100%" class="table table-bordered table-hover" id="_addFiveTable">
                                                 <thead>
                                                      <tr>
-                                                       <th>Customer id</th>
-                                                       <th>Product id</th>
-                                                       <th>Payment method</th>
-                                                       <th>Datetime</th>
-                                                       <th>Status</th>
+                                                       <th>Order id</th>
+                                                       <th>Feedback</th>
+                                                       
                                                      </tr>
                                                 </thead>
                                                  <tbody>  
-                                                     <tr>
-                                                       <td>&nbsp;</td>
-                                                       <td>&nbsp;</td>
-                                                       <td>&nbsp;</td>
-                                                       <td>&nbsp;</td>
-                                                       <td>&nbsp;</td>
-                                                    </tr>
+												 <?php
+				require 'dbconn.php';
+
+				
+				$sql = "SELECT order_id, feedback_txt
+				FROM feedback";
+				$result = mysqli_query($conn, $sql);
+				
+				if (mysqli_num_rows($result) > 0) {
+					// output data of each row
+					while($row = mysqli_fetch_assoc($result)) {
+						
+						echo '
+						<tr>
+							<td>'.$row['order_id'].'</td>
+							<td>'.$row['feedback_txt'].'</td>
+							
+						</tr>
+
+						';
+					
+					}
+				} else {
+					echo "0 results";
+				}
+					?>
+
                                                   </tbody>
                                              </table>
                                           </div>
