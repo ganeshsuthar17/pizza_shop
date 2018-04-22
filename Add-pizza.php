@@ -62,7 +62,7 @@
 				<div class="grid_9">
 					<div class="content"> 
 						
-                                        <form method="POST" enctype='multipart/form-data' action="adp.php">
+                                        <form method="POST" enctype="multipart/form-data" action="adp.php">
                                                 <h3>Add pizza</h3>
 				                				<input type="text" name="p_name" placeholder="Product name" required><br><br>
                                                 <input type="text" name="p_desc" placeholder="Description" required><br><br>

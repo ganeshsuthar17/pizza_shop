@@ -10,7 +10,7 @@
 					notRequiredCl:'notRequired',
 					successCl:'success',
 					successShow:'4000',
-					mailHandlerURL:'bat/MailHandler.php',
+					mailHandlerURL:'cf.php',
 					ownerEmail:'support@template-help.com',
 					stripHTML:true,
 					smtpMailServer:'localhost',
@@ -102,14 +102,10 @@
 								type: "POST",
 								url:_.mailHandlerURL,
 								data:{
-									name:_.getValFromLabel($('.name',_.form)),
-									email:_.getValFromLabel($('.email',_.form)),
-									phone:_.getValFromLabel($('.phone',_.form)),
-									fax:_.getValFromLabel($('.fax',_.form)),
-									state:_.getValFromLabel($('.state',_.form)),
-									message:_.getValFromLabel($('.message',_.form)),
-									owner_email:_.ownerEmail,
-									stripHTML:_.stripHTML
+									c_name:_.getValFromLabel($('.Name',_.form)),
+									c_email:_.getValFromLabel($('.Email',_.form)),
+									c_mobile:_.getValFromLabel($('.Phone',_.form)),
+									c_message:_.getValFromLabel($('.Message',_.form)),									
 								},
 								success: function(){
 									_.showFu()

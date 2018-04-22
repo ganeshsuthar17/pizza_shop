@@ -65,19 +65,72 @@
                                                 <table width="100%" class="table table-bordered table-hover" id="_addFiveTable">
                                                 <thead>
                                                      <tr>
-                                                       <th>Product name</th>
-                                                       <th>Description</th>
-                                                       <th>Image</th>
-                                                       <th>Price</th>
+                                                       <th>Delete</th>                                                    
+                                                       <th>Name</th>
+													   <th>Price</th>
+													   <th>type</th>
+													   <th>Image</th>
+													   <th>Description</th>
+													   <th></th>
                                                      </tr>
                                                 </thead>
+												<style>
+												td{
+													text-align:center;													
+												}
+												
+												</style>
+												<script>
+												function editp(value,field,id){
+													$.post("updateproduct.php",
+													{
+														p_id: id,
+														p_field: field,
+														p_value: value
+													},
+													function(data){
+														alert("Data: " + data + "\nStatus: " + status);
+													});
+												}
+												</script>
                                                  <tbody>  
-                                                     <tr>
-                                                       <td contenteditable="true"></td>
-                                                       <td contenteditable="true">&nbsp;</td>
-                                                       <td contenteditable="true">&nbsp;</td>
-                                                       <td contenteditable="true">&nbsp;</td>
-                                                    </tr>
+													 <?php
+													 require 'dbconn.php';
+													 // Check connection
+													if (!$conn) {
+														die("Connection failed: " . mysqli_connect_error());
+													}
+
+													$sql = "SELECT product_id, name, description, img_url, price, type FROM products";
+													$result = mysqli_query($conn, $sql);
+
+													if (mysqli_num_rows($result) > 0) {
+														// output data of each row
+														while($row = mysqli_fetch_assoc($result)) {
+															
+															echo '<tr>
+															<td contenteditable="false"><a href="deleteproduct.php?id='.$row["product_id"].'"><img src="images/delete.png" width="20px"></a></td>
+															
+															<td><input type="text" value="'. $row["name"].'" onchange="editp(this.value,\'name\',\''.$row["product_id"].'\')"></td>
+												
+															<td><input type="text" value="'. $row["price"].'" onchange="editp(this.value,\'price\',\''.$row["product_id"].'\')"></td>
+															
+															<td><input type="text" value="'. $row["type"].'" onchange="editp(this.value,\'type\',\''.$row["product_id"].'\')"></td>
+															<td><input type="text" value="'. $row["img_url"].'" onchange="editp(this.value,\'img_url\',\''.$row["product_id"].'\')"></td>
+															<td><input type="text" value="'. $row["description"].'" onchange="editp(this.value,\'description\',\''.$row["product_id"].'\')"></td>
+
+
+
+														 </tr>';
+															
+														}
+													} else {
+														echo "0 results";
+													}
+
+													mysqli_close($conn);
+													 ?>
+                                                     
                                                   </tbody>
                                              </table>
                                           </div>

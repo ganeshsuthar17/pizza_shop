@@ -10,7 +10,6 @@
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery-migrate-1.1.1.js"></script>
 		<script src="js/superfish.js"></script>
-		<script src="js/forms.js"></script>
 		<script src="js/bgStretch.js"></script>
 		<script src="js/jquery.equalheights.js"></script>
 		<script src="js/jquery.easing.1.3.js"></script>
@@ -22,17 +21,7 @@
 				})
 			});
 		</script>
-		<!--[if lt IE 8]>
-			<div style=' clear: both; text-align:center; position: relative;'>
-				<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-					<img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-				</a>
-			</div>
-		<![endif]-->
-		<!--[if lt IE 9]>
-			<script src="js/html5shiv.js"></script>
-			<link rel="stylesheet" media="screen" href="css/ie.css">
-		<![endif]-->
+		
 	</head>
 	<body class="">
 		<div id="bgStretch"><img src="images/pizza 5.jpg" alt=""></div>
@@ -60,30 +49,30 @@
 						</div>
 						<div class="grid_3 omega">
 							<h3>Contact Us</h3>
-							<form id="form">
+							<form id="form" method="POST" action="cf.php">
 								<div class="success_wrapper">
 									<div class="success">Contact form submitted!<br>
 									<strong>We will be in touch soon.</strong> </div>
 								</div>
 								<fieldset>
 									<label class="name">
-									<input type="text" value="Name:">
+									<input type="text" name="c_name" value="Name:">
 									<br class="clear">
 									<span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span> </label><label class="phone">
-									<input type="tel" value="Telephone:">
+									<input type="tel" name="c_mobile" value="Phone:">
 									<br class="clear">
 									<span class="error error-empty">*This is not a valid phone number.</span><span class="empty error-empty">*This field is required.</span> </label>
 									<label class="email">
-									<input type="text" value="E-mail:">
+									<input type="text" name="c_email" value="Email:">
 									<br class="clear">
 									<span class="error error-empty">*This is not a valid email address.</span><span class="empty error-empty">*This field is required.</span> </label>
 									<label class="message">
-									<textarea>Message:</textarea>
+									<textarea name="c_message" value="Message:">Message:</textarea>
 									<br class="clear">
 									<span class="error">*The message is too short.</span> <span class="empty">*This field is required.</span> </label>
 									<div class="clear"></div>
 									<div class="btns">
-										<a data-type="reset" class="btn">clear</a><a data-type="submit" class="btn">send</a>
+										<a data-type="reset" class="btn">clear</a><input type="submit">
 										<div class="clear"></div>
 									</div>
 								</fieldset>
